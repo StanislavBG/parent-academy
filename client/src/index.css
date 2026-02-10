@@ -12,7 +12,7 @@
   --background: 210 40% 98%;
   --foreground: 222 47% 11%;
 
-  --primary: 245 80% 60%; /* Vibrant Indigo/Purple */
+  --primary: 252 70% 57%; /* Warm purple — approachable */
   --primary-foreground: 210 40% 98%;
 
   --secondary: 210 40% 96.1%;
@@ -21,7 +21,7 @@
   --muted: 210 40% 96.1%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 330 80% 60%; /* Pink accent for highlights */
+  --accent: 340 75% 55%; /* Warm rose — caring */
   --accent-foreground: 222 47% 11.2%;
 
   --destructive: 0 84.2% 60.2%;
@@ -29,7 +29,7 @@
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 245 80% 60%;
+  --ring: 252 70% 57%;
 
   --radius: 1rem;
 }

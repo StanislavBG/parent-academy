@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { LayoutDashboard, ListTodo, Menu, X } from "lucide-react";
+import { LayoutDashboard, Brain, BarChart3, Settings, Menu, MessageCircle, GraduationCap } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -15,25 +15,30 @@ export function Layout({ children }: LayoutProps) {
 
   const navItems = [
     { href: "/", label: "Home", icon: LayoutDashboard },
-    { href: "/page-2", label: "Task Manager", icon: ListTodo },
+    { href: "/experts", label: "Experts", icon: Brain },
+    { href: "/dashboard", label: "My Plan", icon: GraduationCap },
+    { href: "/tracking", label: "Tracking", icon: BarChart3 },
+    { href: "/settings", label: "Settings", icon: Settings },
   ];
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-white/80 backdrop-blur-xl border-r border-border/50">
       <div className="p-8">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display">
-          AppOne
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1">Premium Interface</p>
+        <Link href="/">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-display cursor-pointer">
+            Parent Academy
+          </h1>
+        </Link>
+        <p className="text-sm text-muted-foreground mt-1">Expert Coaching Platform</p>
       </div>
 
       <nav className="flex-1 px-4 space-y-2">
         {navItems.map((item) => {
-          const isActive = location === item.href;
+          const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
           const Icon = item.icon;
-          
+
           return (
-            <Link key={item.href} href={item.href} className="block group">
+            <Link key={item.href} href={item.href} className="block group" onClick={() => setIsMobileOpen(false)}>
               <div
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                   isActive
@@ -51,14 +56,10 @@ export function Layout({ children }: LayoutProps) {
 
       <div className="p-6 border-t border-border/50 bg-gradient-to-b from-transparent to-primary/5">
         <div className="bg-card rounded-xl p-4 border shadow-sm">
-          <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">Status</p>
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="text-sm font-semibold text-foreground">System Online</span>
-          </div>
+          <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-2">Safety</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Not a substitute for professional care. If urgent, contact emergency services.
+          </p>
         </div>
       </div>
     </div>
@@ -75,7 +76,11 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1 flex flex-col h-full relative overflow-hidden">
         {/* Mobile Header */}
         <div className="md:hidden flex items-center justify-between p-4 bg-white/80 backdrop-blur-md border-b z-20 sticky top-0">
-          <h1 className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">AppOne</h1>
+          <Link href="/">
+            <h1 className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Parent Academy
+            </h1>
+          </Link>
           <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
