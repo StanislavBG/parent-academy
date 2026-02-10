@@ -5,7 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/layout";
 import Home from "@/pages/Home";
-import Page2 from "@/pages/Page2";
+import Onboarding from "@/pages/Onboarding";
+import Experts from "@/pages/Experts";
+import Chat from "@/pages/Chat";
+import Dashboard from "@/pages/Dashboard";
+import Tracking from "@/pages/Tracking";
+import Settings from "@/pages/Settings";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -13,7 +18,12 @@ function Router() {
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/page-2" component={Page2} />
+        <Route path="/onboarding" component={Onboarding} />
+        <Route path="/experts" component={Experts} />
+        <Route path="/chat/:agentType" component={Chat} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/tracking" component={Tracking} />
+        <Route path="/settings" component={Settings} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
