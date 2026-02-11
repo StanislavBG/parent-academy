@@ -169,13 +169,3 @@ export type InsertConversation = z.infer<typeof insertConversationSchema>;
 export type Message = typeof messages.$inferSelect;
 export type InsertMessage = z.infer<typeof insertMessageSchema>;
 
-// Keep legacy items table for compatibility during migration
-export const items = pgTable("items", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  description: text("description").notNull(),
-  completed: boolean("completed").default(false),
-});
-export const insertItemSchema = createInsertSchema(items).omit({ id: true });
-export type InsertItem = z.infer<typeof insertItemSchema>;
-export type Item = typeof items.$inferSelect;

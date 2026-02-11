@@ -5,14 +5,18 @@
 @tailwind utilities;
 
 :root {
-  /* Modern, vibrant palette */
+  /* Font families */
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
+  /* Core palette — warm, approachable */
   --background: 210 40% 98%;
   --foreground: 222 47% 11%;
 
-  --primary: 252 70% 57%; /* Warm purple — approachable */
+  --primary: 252 70% 57%;
   --primary-foreground: 210 40% 98%;
 
   --secondary: 210 40% 96.1%;
@@ -21,17 +25,40 @@
   --muted: 210 40% 96.1%;
   --muted-foreground: 215 16% 47%;
 
-  --accent: 340 75% 55%; /* Warm rose — caring */
+  --accent: 340 75% 55%;
   --accent-foreground: 222 47% 11.2%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
+  /* Card & popover surfaces */
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+
+  /* Form / borders */
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
   --ring: 252 70% 57%;
-
   --radius: 1rem;
+
+  /* Charts */
+  --chart-1: 252 70% 57%;
+  --chart-2: 340 75% 55%;
+  --chart-3: 197 71% 52%;
+  --chart-4: 142 64% 46%;
+  --chart-5: 27 87% 54%;
+
+  /* Sidebar */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 222 47% 11%;
+  --sidebar-border: 214.3 31.8% 91.4%;
+  --sidebar-ring: 252 70% 57%;
+  --sidebar-primary: 252 70% 57%;
+  --sidebar-primary-foreground: 210 40% 98%;
+  --sidebar-accent: 210 40% 96.1%;
+  --sidebar-accent-foreground: 222 47% 11.2%;
 }
 
 @layer base {
@@ -51,7 +78,6 @@
   .text-balance {
     text-wrap: balance;
   }
-  
   .glass-panel {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
   }
