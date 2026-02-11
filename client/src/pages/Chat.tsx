@@ -5,7 +5,8 @@ import { useLocation, useRoute } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useSendMessage, useConversation } from "@/hooks/use-parent-academy";
+import { useSendMessage, useConversation, useCreateSession } from "@/hooks/use-parent-academy";
+import { getSessionToken } from "@/lib/queryClient";
 type AgentMode = "chat" | "roleplay-parent" | "roleplay-child";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -44,6 +45,7 @@ export default function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = useSendMessage();
+  const createSession = useCreateSession();
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -51,6 +53,11 @@ export default function Chat() {
 
   const handleSend = async () => {
     if (!input.trim() || sendMessage.isPending) return;
+
+    // Ensure a session exists before sending a message
+    if (!getSessionToken()) {
+      await createSession.mutateAsync();
+    }
 
     const userMsg = input.trim();
     setInput("");
